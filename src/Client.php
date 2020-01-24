@@ -33,6 +33,9 @@ class Client
     /** @var Endpoint\Campaigns */
     public $campaigns;
 
+    /** @var Endpoint\Campaigns */
+    public $broadcasts;
+
     /** @var Endpoint\Messages */
     public $messages;
 
@@ -66,6 +69,7 @@ class Client
         $this->customers = new Endpoint\Customers($this);
         $this->page = new Endpoint\Page($this);
         $this->campaigns = new Endpoint\Campaigns($this);
+        $this->broadcasts = new Endpoint\Broadcasts($this);
         $this->messages = new Endpoint\Messages($this);
         $this->messageTemplates = new Endpoint\MessageTemplates($this);
         $this->newsletters = new Endpoint\Newsletters($this);
@@ -76,6 +80,7 @@ class Client
 
         $this->apiKey = $apiKey;
         $this->siteId = $siteId;
+
     }
 
     /**
@@ -83,6 +88,7 @@ class Client
      */
     private function setDefaultClient()
     {
+        //$this->httpClient = new BaseClient(['debug' => true]);
         $this->httpClient = new BaseClient();
     }
 
