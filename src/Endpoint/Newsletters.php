@@ -73,4 +73,24 @@ class Newsletters extends Base
 
         return $this->client->get($path, $options);
     }
+
+    /**
+     * Get newsletter link metrics
+     * @see https://customer.io/docs/api/#apibeta-apinewslettersnewsletters_get_link_metrics
+     * @param array $options
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getLinkMetrics(array $options)
+    {
+        if (!isset($options['id'])) {
+            $this->mockException('Newsletter id is required!', 'GET');
+        } // @codeCoverageIgnore
+
+        $path = $this->newslettersPath($options['id'], ['metrics', 'links']);
+        unset($options['id']);
+
+        return $this->client->get($path, $options);
+    }
+
 }
