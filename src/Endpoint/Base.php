@@ -45,6 +45,16 @@ class Base
      * @param array $extra
      * @return string
      */
+    protected function broadcastPath($id = null, array $extra = [])
+    {
+        return $this->generatePath('broadcasts', $id, $extra);
+    }
+
+    /**
+     * @param null $id
+     * @param array $extra
+     * @return string
+     */
     protected function messagesPath($id = null, array $extra = [])
     {
         return $this->generatePath('messages', $id, $extra);
